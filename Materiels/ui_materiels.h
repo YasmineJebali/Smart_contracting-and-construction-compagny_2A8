@@ -62,7 +62,7 @@ public:
     QWidget *page_3;
     QPushButton *pushButton_reche;
     QLabel *label_ref;
-    QLineEdit *lineEdit_reference;
+    QLineEdit *lineEdit_ref_nom;
     QFrame *frame_6;
     QPushButton *pushButton_mod;
     QLabel *label_12;
@@ -354,15 +354,15 @@ public:
 "}"));
         label_ref = new QLabel(page_3);
         label_ref->setObjectName(QStringLiteral("label_ref"));
-        label_ref->setGeometry(QRect(500, 140, 81, 20));
+        label_ref->setGeometry(QRect(500, 140, 101, 20));
         QFont font2;
         font2.setPointSize(10);
         font2.setBold(true);
         font2.setItalic(false);
         label_ref->setFont(font2);
-        lineEdit_reference = new QLineEdit(page_3);
-        lineEdit_reference->setObjectName(QStringLiteral("lineEdit_reference"));
-        lineEdit_reference->setGeometry(QRect(590, 140, 113, 20));
+        lineEdit_ref_nom = new QLineEdit(page_3);
+        lineEdit_ref_nom->setObjectName(QStringLiteral("lineEdit_ref_nom"));
+        lineEdit_ref_nom->setGeometry(QRect(612, 140, 91, 20));
         frame_6 = new QFrame(page_3);
         frame_6->setObjectName(QStringLiteral("frame_6"));
         frame_6->setGeometry(QRect(540, 210, 251, 241));
@@ -557,7 +557,7 @@ public:
         pushButton_notification->raise();
         pushButton_reche->raise();
         label_ref->raise();
-        lineEdit_reference->raise();
+        lineEdit_ref_nom->raise();
         frame_6->raise();
         tabView_Materiels->raise();
         frame_5->raise();
@@ -609,7 +609,7 @@ public:
         label_click->setText(QString());
         label_backr->setText(QString());
         pushButton_reche->setText(QApplication::translate("materiels", "Recherche", Q_NULLPTR));
-        label_ref->setText(QApplication::translate("materiels", "R\303\251ference  :", Q_NULLPTR));
+        label_ref->setText(QApplication::translate("materiels", "R\303\251f/Nom", Q_NULLPTR));
         pushButton_mod->setText(QApplication::translate("materiels", "Modifier", Q_NULLPTR));
         label_12->setText(QApplication::translate("materiels", "Prix TTC :", Q_NULLPTR));
         label_7->setText(QApplication::translate("materiels", "R\303\251f:", Q_NULLPTR));

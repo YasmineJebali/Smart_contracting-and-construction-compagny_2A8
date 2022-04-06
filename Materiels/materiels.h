@@ -33,12 +33,18 @@ public:
     QSqlQueryModel *trierR();
     QSqlQueryModel *trierN();
     bool supprimer(int ref);
-    QSqlQueryModel *rechercher(int ref);
+    QSqlQueryModel *rechercherR(int ref);
+    QSqlQueryModel *rechercherN(QString nom);
     bool modifier(int ref);
     QSqlQueryModel  *countM();
     void Statistic(QVector<double>* ticks,QVector<QString> *labels);
     int countRow();
+      void testInput();
+    void notification_noInput();
     void exportTableViewToCSV();
+    void notification_supprimer();
+    void notification_modifier();
+    void notification_ajout();
 
 private slots:
     void on_pushButton_ajou_clicked();

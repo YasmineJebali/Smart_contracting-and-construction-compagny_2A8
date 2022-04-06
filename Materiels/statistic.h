@@ -16,7 +16,7 @@ public:
     ~Statistic();
       Statistic(QVector<double>* ticks,QVector<QString> *labels);
      void MakeStat();
-     void on_Quitter_clicked();
+     //void on_Quitter_clicked();
 
 
 

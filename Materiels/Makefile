@@ -227,6 +227,7 @@ Makefile: NouveauProjet.pro C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/win32-g++/qma
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Sql.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Network.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile NouveauProjet.pro -spec win32-g++ "CONFIG+=debug"
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -395,6 +396,7 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Multimedia.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Sql.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Network.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile NouveauProjet.pro -spec win32-g++ "CONFIG+=debug"

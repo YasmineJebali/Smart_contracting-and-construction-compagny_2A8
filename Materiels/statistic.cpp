@@ -1,4 +1,4 @@
-#include "statistic.h"
+    #include "statistic.h"
 #include "ui_statistic.h"
 #include "qcustomplot.h"
 #include <QSqlQueryModel>
@@ -97,10 +97,7 @@ void Statistic::MakeStat()
 
 
     }
-void Statistic::on_Quitter_clicked()
-{
-    close();
-}
+
 
 Statistic::~Statistic()
 {

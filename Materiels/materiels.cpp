@@ -141,9 +141,11 @@ void materiels::on_pushButton_suppr_clicked()
 
     if(test)
     {
+
         ui->tabView_Materiels->setModel(tMateriels->afficher());
         QMessageBox::information(nullptr, QObject::tr("Supprimer"),
         QObject::tr("Suppression avec succée"), QMessageBox::Ok);
+        notification_supprimer();
         ui->lineEdit_rf->clear();
         ui->lineEdit_nom->clear();
         ui->spinBox_Qt->clear();
@@ -160,7 +162,7 @@ void materiels::on_pushButton_suppr_clicked()
 }
 
 
-QSqlQueryModel *materiels::rechercher(int ref)
+QSqlQueryModel *materiels::rechercherR(int ref)
 {
     QSqlQueryModel * model1=new QSqlQueryModel();
     QString res=QString::number(ref);
@@ -180,6 +182,25 @@ QSqlQueryModel *materiels::rechercher(int ref)
 
 }
 
+QSqlQueryModel *materiels::rechercherN(QString nom)
+{
+    QSqlQueryModel * model1=new QSqlQueryModel();
+
+
+
+    model1->setQuery("select * from MATERIELS where NOM LIKE '"+nom+"%'");
+    model1->setHeaderData(0, Qt::Horizontal, QObject::tr("REF"));
+    model1->setHeaderData(1, Qt::Horizontal, QObject::tr("NOM"));
+    model1->setHeaderData(2, Qt::Horizontal, QObject::tr("QT"));
+    model1->setHeaderData(3, Qt::Horizontal, QObject::tr("PRTTC"));
+    model1->setHeaderData(4, Qt::Horizontal, QObject::tr("PRHT"));
+    model1->setHeaderData(5, Qt::Horizontal, QObject::tr("DISPO"));
+
+
+       return model1;
+
+
+}
 
 
 QSqlQueryModel *materiels::trierR()
@@ -318,7 +339,8 @@ void materiels::on_pushButton_aj2_clicked()
 
         QMessageBox::information(nullptr, QObject::tr("ajout"),
          QObject::tr("Ajout effectué.\n""Click Cancel to exit"),QMessageBox::Cancel);
-
+          testInput();
+          notification_ajout();
      }
    else
        QMessageBox::critical(nullptr, QObject::tr("Not OK"),
@@ -339,6 +361,7 @@ void materiels::on_pushButton_mod_clicked()
     bool test=m.modifier(ref);
     if(test)
   {
+        notification_modifier();
 
         ui->tabView_Materiels->setModel(tMateriels->afficher());//refresh
   QMessageBox::information(nullptr, QObject::tr("Modifier"),
@@ -364,8 +387,10 @@ QMessageBox::critical(nullptr, QObject::tr("Modifier"),
 
 void materiels::on_pushButton_reche_clicked()
 {
-    int reference = ui->lineEdit_reference->text().toUInt();
-            ui->tabView_Materiels->setModel(tMateriels->rechercher(reference));
+    int reference = ui->lineEdit_ref_nom->text().toUInt();
+    QString nom= ui->lineEdit_ref_nom->text();
+            ui->tabView_Materiels->setModel(tMateriels->rechercherR(reference));
+            ui->tabView_Materiels->setModel(tMateriels->rechercherN(nom));
 }
 
 
@@ -410,3 +435,46 @@ void materiels::on_pushButton_excel_clicked()
 exportTableViewToCSV();
 }
 
+void materiels::notification_ajout()
+{
+
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+
+    notifyIcon->show();
+    notifyIcon->showMessage("Produit: ","un element ajouté ",QSystemTrayIcon::Information,15000);
+}
+
+void materiels::notification_supprimer(){
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+
+    notifyIcon->show();
+    notifyIcon->showMessage("Produit","un element Supprimé",QSystemTrayIcon::Information,15000);
+}
+
+void materiels::notification_modifier(){
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+
+    notifyIcon->show();
+    notifyIcon->showMessage("Produit ","Un element est modifié",QSystemTrayIcon::Information,15000);
+
+}
+
+void materiels::notification_noInput(){
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+
+    notifyIcon->show();
+    notifyIcon->showMessage("Produit ","no input !",QSystemTrayIcon::Information,15000);
+
+}
+
+void materiels::testInput(){
+
+   if ((ui->lineEdit_ref->text()=="")||(ui->lineEdit_nom->text()=="")||(((ui->lineEdit_nom->text()=="")&&(ui->SpinBox_Qt->text().toInt()==0))))
+   {
+       notification_noInput();
+       QMessageBox::critical(nullptr, QObject::tr("No Input!"),
+           QObject::tr("Erreur !.\n"
+                       "No Input Click Cancel to exit."), QMessageBox::Cancel);
+
+   }
+   }

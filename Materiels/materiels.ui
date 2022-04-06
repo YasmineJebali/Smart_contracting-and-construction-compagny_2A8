@@ -558,7 +558,7 @@ color:white;
       <rect>
        <x>500</x>
        <y>140</y>
-       <width>81</width>
+       <width>101</width>
        <height>20</height>
       </rect>
      </property>
@@ -570,15 +570,15 @@ color:white;
       </font>
      </property>
      <property name="text">
-      <string>Réference  :</string>
+      <string>Réf/Nom</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_reference">
+    <widget class="QLineEdit" name="lineEdit_ref_nom">
      <property name="geometry">
       <rect>
-       <x>590</x>
+       <x>612</x>
        <y>140</y>
-       <width>113</width>
+       <width>91</width>
        <height>20</height>
       </rect>
      </property>
@@ -1113,7 +1113,7 @@ color :white;
     <zorder>pushButton_notification</zorder>
     <zorder>pushButton_reche</zorder>
     <zorder>label_ref</zorder>
-    <zorder>lineEdit_reference</zorder>
+    <zorder>lineEdit_ref_nom</zorder>
     <zorder>frame_6</zorder>
     <zorder>tabView_Materiels</zorder>
     <zorder>frame_5</zorder>

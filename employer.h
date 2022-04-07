@@ -31,6 +31,12 @@ public:
    QSqlQueryModel * afficher();
    bool suppprimer(int);
    bool modifier();
+   QSqlQueryModel * rechercher(int);
+   QSqlQueryModel * rechercherNom(QString);
+   QSqlQueryModel * afficherClassement();
+   bool rating(int,double);
+
+
 
    };
 

@@ -3,6 +3,15 @@
 #include "employer.h"
 #include <QMessageBox>
 #include <QIntValidator>
+#include "smtp.h"
+#include "mailing.h"
+#include <iostream>
+#include <QtCharts>
+#include <QPieSlice>
+#include <QSqlQuery>
+#include <QPieSeries>
+#include <QRegExpValidator>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -10,8 +19,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->le_id->setValidator (new QIntValidator(100, 9999999, this));
+    ui->le_id_sup_2->setValidator (new QIntValidator(100, 9999999, this));
+    ui->le_id_4->setValidator (new QIntValidator(100, 9999999, this));
+    ui->rechercheinput->setValidator (new QIntValidator(100, 9999999, this));
+
     ui->tab_employee->setModel(EMP->afficher());
     ui->tab_employee->show();
+    ui->rated->setModel(EMP->afficherClassement());
+    ui->rated->show();
 
 }
 
@@ -36,16 +51,17 @@ void MainWindow::on_pb_ajouter_clicked()
     bool test=EMP.ajouter();
     if (test)
      {
+        ui->le_id->setValidator (new QIntValidator(100, 9999999, this));
         ui->tab_employee->setModel(EMP.afficher());
         QMessageBox:: information(nullptr, QObject::tr("OK"),
                 QObject::tr("ajout effectué\n"
-                            "click OK to exit."), QMessageBox::Cancel);
+                            "click OK to exit."), QMessageBox::Ok);
 
       }
         else
         QMessageBox::critical(nullptr,QObject::tr("Not OK"),
                 QObject::tr("Ajout non effectuè.\n"
-                             "clicK OK to exit."), QMessageBox::Cancel);
+                             "clicK OK to exit."), QMessageBox::Ok);
 
 }
 
@@ -53,19 +69,26 @@ void MainWindow::on_pb_ajouter_clicked()
 void MainWindow::on_pb_supprimer_clicked()
 {
    employee EMP; EMP.setid(ui->le_id_sup_2->text().toInt());
+
    bool test=EMP.suppprimer(EMP.getID());
 
    if (test)
     {
+
+
+       ui->rated->setModel(EMP.afficherClassement());
+       ui->rated->show();
+
        QMessageBox:: information(nullptr, QObject::tr("OK"),
                QObject::tr("Suppression effectuée\n"
-                           "click Cancel to exit."), QMessageBox::Cancel);
+                           "click OK LELA YASMINE to exit."), QMessageBox::Ok);
 
      }
        else
        QMessageBox::critical(nullptr,QObject::tr("Not OK"),
                QObject::tr("Echec de suppression\n"
-                           "click Cancel to exit."), QMessageBox::Cancel);
+                           "click OK LELA YASMINE to exit."), QMessageBox::Ok);
+
    ui->tab_employee->setModel(EMP.afficher()); //refreche
 
 
@@ -89,13 +112,135 @@ void MainWindow::on_pb_modifier_clicked()
      {
         QMessageBox:: information(nullptr, QObject::tr("OK"),
                 QObject::tr("Modifier effectué\n"
-                            "click Cancel to exit."), QMessageBox::Cancel);
+                            "click OK to exit."), QMessageBox::Ok);
 
       }
         else
         QMessageBox::critical(nullptr,QObject::tr("Not OK"),
                 QObject::tr("Modifier non effectuè.\n"
-                             "clicK Cancel to exit."), QMessageBox::Cancel);
+                             "clicK OK to exit."), QMessageBox::Ok);
+
     ui->tab_employee->setModel(EMP.afficher());
 
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    Smtp *smtp = new Smtp("yasmine.jebaliii@gmail.com","yasmine12345Y","smtp.gmail.com",465);
+    connect (smtp, SIGNAL (status (QString)), this, SLOT (mailSent(QString)));
+    smtp->sendMail("yasmine.jebaliii@gmail.com", ui->adresse_3->text(), ui->sujet->text(), ui->text->toPlainText());
+    ui->adresse_3->setText("");
+    ui->sujet->setText("");
+    ui->text->setText("");
+
+}
+
+
+void MainWindow::on_recherche_clicked()
+{
+
+  int id=ui->rechercheinput->text().toInt();
+
+
+ employee *EMP =new employee();
+ //ui->setupUi(this);
+ ui->tabrecherche->setModel(EMP->rechercher(id));
+ ui->tabrecherche->show();
+
+ }
+
+
+void MainWindow::on_rechercheNom_clicked()
+{
+    QString nom=ui->rechercheinput2->text();
+
+    employee *EMP =new employee();
+    ui->tabrecherche->setModel(EMP->rechercherNom(nom));
+    ui->tabrecherche->show();
+
+}
+
+void MainWindow::on_statistique_clicked()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+                          model->setQuery("select * from employes where SAL_EMP < 10 ");
+                          float salaire1=model->rowCount();
+                          model->setQuery("select * from employes where SAL_EMP between 10 and 20 ");
+                          float salaire2=model->rowCount();
+                          model->setQuery("select * from employes where SAL_EMP >20 ");
+                          float salaire3=model->rowCount();
+                          float total=salaire1+salaire2+salaire3;
+                          QString a=QString("inferieur a 10  "+QString::number((salaire1*100)/total,'f',2)+"%" );
+                          QString b=QString("entre 10 et 20  "+QString::number((salaire2*100)/total,'f',2)+"%" );
+                          QString c=QString("+20  "+QString::number((salaire3*100)/total,'f',2)+"%" );
+                          QPieSeries *series = new QPieSeries();
+                          series->append(a,salaire1);
+                          series->append(b,salaire2);
+                          series->append(c,salaire3);
+                  if (salaire1!=0)
+                  {QPieSlice *slice = series->slices().at(0);
+                   slice->setLabelVisible();
+                   slice->setPen(QPen());}
+                  if ( salaire2!=0)
+                  {
+                           // Add label, explode and define brush for 2nd slice
+                           QPieSlice *slice1 = series->slices().at(1);
+                           //slice1->setExploded();
+                           slice1->setLabelVisible();
+                  }
+                  if(salaire3!=0)
+                  {
+                           // Add labels to rest of slices
+                           QPieSlice *slice2 = series->slices().at(2);
+                           //slice1->setExploded();
+                           slice2->setLabelVisible();
+                  }
+                          // Create the chart widget
+                          QChart *chart = new QChart();
+                          // Add data to chart with title and hide legend
+                          chart->addSeries(series);
+                          chart->setTitle("Pourcentage Par salaire :Nombre des employes disponibles "+ QString::number(total));
+                          chart->legend()->hide();
+                          // Used to display the chart
+                          QChartView *chartView = new QChartView(chart);
+                          chartView->setRenderHint(QPainter::Antialiasing);
+                          chartView->resize(1000,500);
+                          chartView->show();
+}
+
+
+
+void MainWindow::on_dark_clicked()
+{
+
+          QFile styleSheetFile("C:/Users/Mynet/Desktop/employer/Diffnes.qss");
+            styleSheetFile.open(QFile::ReadOnly);
+            QString styleSheet = QLatin1String(styleSheetFile.readAll());
+            MainWindow::setStyleSheet(styleSheet);
+}
+
+void MainWindow::on_light_clicked()
+{
+    QFile styleSheetFile("C:/Users/Mynet/Desktop/employer/Integrid.qss");
+        styleSheetFile.open(QFile::ReadOnly);
+        QString styleSheet = QLatin1String(styleSheetFile.readAll());
+        MainWindow::setStyleSheet(styleSheet);
+}
+
+void MainWindow::on_evaluer_clicked()
+{
+
+   int id=ui->identifiant->text().toInt();
+   double range=ui->Slider->value();
+   qDebug()<<id<<range;
+
+   employee * EMP=new employee();
+
+   bool test=EMP->rating(id,range);
+   if (test)
+   {
+   ui->rated->setModel(EMP->afficherClassement());
+   ui->rated->show();
+   }
+}
+

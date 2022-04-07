@@ -15,6 +15,7 @@ employee::employee(int ID_EMP,int SAL_EMP,QString NM_EMP,QString PR_EMP,QString 
     this->FONCT_EMP=FONCT_EMP;
     this->EMAIL_EMP=EMAIL_EMP;
 }
+
 bool employee:: ajouter()
 {
   QSqlQuery query;
@@ -37,7 +38,7 @@ QSqlQueryModel *  employee:: afficher()
 {
     QSqlQueryModel* model = new QSqlQueryModel();
 
-          model->setQuery("select* FROM employes");
+          model->setQuery("select* FROM employes order by ID_EMP desc");
           model->setHeaderData(0, Qt::Horizontal, QObject::tr("Identifiant"));
           model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
           model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prenom"));
@@ -55,10 +56,31 @@ QSqlQueryModel *  employee:: afficher()
 bool employee:: suppprimer(int id )
 {
    QSqlQuery query;
-    query.prepare("Delete from employes where ID_EMP= :id");
-    query.bindValue(0,id);
-   return query.exec();
- }
+
+    query.prepare("select ID_RATING from rating where employee_FK= :id");
+    query.bindValue(":id",id);
+    if (query.exec())
+    {
+        QSqlQuery query1,query2;
+        query1.prepare("Delete from employes where ID_EMP= :id");
+        query1.bindValue(0,id);
+        query2.prepare("Delete from rating where employee_FK= :id");
+        query2.bindValue(0,id);
+        if(query1.exec() && query2.exec())
+            return true;
+
+
+    }
+    else
+       {
+        query.prepare("Delete from employes where ID_EMP= :id");
+        query.bindValue(0,id);
+        if (query.exec())
+            return true;
+    }
+    return false;
+
+}
 
 
 bool employee::modifier()
@@ -78,6 +100,111 @@ bool employee::modifier()
     return    query.exec();
 
 }
+QSqlQueryModel * employee::rechercher(int id)
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    QSqlQuery query;
+    query.prepare("select * from employes where ID_EMP=:id ");
+    query.bindValue(":id",id);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Identifiant"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Adresse"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Salaire"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("Fonction"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("Email"));
+
+
+
+
+return model;
+}
+
+QSqlQueryModel * employee::rechercherNom(QString nom)
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    QSqlQuery query;
+    query.prepare("select * from employes where NM_EMP=:nom ");
+    query.bindValue(":nom",nom);
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Identifiant"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prenom"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Adresse"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Salaire"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("Fonction"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("Email"));
+
+return model;
+}
+
+bool employee::rating(int id,double rate)
+{
+     QSqlQuery query;
+     query.prepare("select ID_EMP from employes where ID_EMP=:id ");
+     query.bindValue(":id",id);
+
+     if (!query.exec())
+         return false;
+     else
+     {
+       query.prepare("insert into rating(id_rating,classement,employee_FK) values(NULL,:R,:id)");
+       query.bindValue(":R",rate);
+       query.bindValue(":id",id);
+
+        if(query.exec())
+           return true;
+           else return false;
+     }
+
+
+}
+QSqlQueryModel * employee::afficherClassement()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+          model->setQuery("select ID_EMP,NM_EMP,PR_EMP,Classement from rating,employes where rating.employee_fk=employes.ID_EMP");
+          model->setHeaderData(0, Qt::Horizontal, QObject::tr("Identifiant"));
+          model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+          model->setHeaderData(2, Qt::Horizontal, QObject::tr("Prenom"));
+          model->setHeaderData(4, Qt::Horizontal, QObject::tr("Classement"));
+
+          qDebug()<<model;
+
+          return model;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -13,13 +13,13 @@ int main(int argc, char *argv[])
     { w.show();
         QMessageBox::information(nullptr, QObject::tr("database is open"),
                     QObject::tr("connection successful.\n"
-                                "Click OK to exit."), QMessageBox::Cancel);
+                                "Click OK to exit."), QMessageBox::Ok);
 
 }
     else
         QMessageBox::critical(nullptr, QObject::tr("database is not open"),
                     QObject::tr("connection failed.\n"
-                                "Click OK to exit."), QMessageBox::Cancel);
+                                "Click OK to exit."), QMessageBox::Ok);
 
 
 

@@ -11,6 +11,7 @@
 #include <QValidator>
 #include <QComboBox>
 #include <QSystemTrayIcon>
+
 matieresprem::matieresprem(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::matieresprem)
@@ -367,4 +368,35 @@ void matieresprem::on_pushButton_statut_clicked()
     ui->tabView_MatieresPrem->setModel(tMatieresPrem->statistiques());
 
 }
+
+
+void matieresprem::on_pushButton_Qrcode_clicked()
+{
+    qrcode = new class  QRcode(this);
+    qrcode->setWindowTitle("QRcode");
+    qrcode->show();
+this->hide();
+}
+
+
+void matieresprem::on_pushButton_image_clicked()
+{
+
+    QFileDialog dialog(this);
+    QDir dir;
+        dialog.setNameFilter(tr("Images (*.png *.bmp *.jpg)"));
+        dialog.setViewMode(QFileDialog::Detail);
+        QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                    "C:/Users/mrdje/Downloads/MatieresPrem/images");
+        QImage *img = new QImage(dir.absoluteFilePath(fileName));
+        int w1 = ui->label_img->width();
+         int h1 = ui->label_img->height();
+          QPixmap map = QPixmap::fromImage(img->scaled(w1,h1,Qt::KeepAspectRatio,Qt::FastTransformation));
+           ui->label_img->setPixmap(map);
+           ui->label_img->show();
+
+}
+
+
+
 

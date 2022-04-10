@@ -7,6 +7,7 @@
 
 #include <QVector>
 #include <qtableview.h>
+#include "qrcode.h"
 
 namespace Ui {
 class matieresprem;
@@ -59,6 +60,12 @@ private slots:
     void on_pushButton_reche_2_clicked();
     void on_pushButton_statut_clicked();
 
+    void on_pushButton_Qrcode_clicked();
+
+    void on_pushButton_image_clicked();
+
+
+
 private:
     Ui::matieresprem *ui;
     int ref;
@@ -70,6 +77,7 @@ private:
     QString type;
     matieresprem *tMatieresPrem;
     class Statistic *statistic;
+    QRcode *qrcode;
 
 };
 

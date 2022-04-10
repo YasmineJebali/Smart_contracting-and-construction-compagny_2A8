@@ -20,16 +20,21 @@ SOURCES += \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
-    matieresprem.cpp
+    matieresprem.cpp \
+    qrcode.cpp \
+    qrcodegen.cpp
 
 HEADERS += \
     connection.h \
     mainwindow.h \
-    matieresprem.h
+    matieresprem.h \
+    qrcode.h \
+    qrcodegen.h
 
 FORMS += \
     mainwindow.ui \
-    matieresprem.ui
+    matieresprem.ui \
+    qrcode.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

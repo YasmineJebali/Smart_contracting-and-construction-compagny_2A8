@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/ressources">
+        <file>imgs/1.png</file>
+        <file>imgs/2.png</file>
+        <file>imgs/logo.png</file>
+        <file>imgs/3.png</file>
+        <file>imgs/4.jpg</file>
+        <file>imgs/4.png</file>
+        <file>gifs/1.gif</file>
+        <file>gifs/2.gif</file>
+        <file>gifs/3.gif</file>
+        <file>gifs/4.gif</file>
+        <file>gifs/5.gif</file>
+        <file>imgs/7.png</file>
+        <file>icons/2.ico</file>
+        <file>imgs/5.png</file>
+        <file>gifs/6.gif</file>
+        <file>imgs/6.png</file>
+        <file>imgs/8.png</file>
+        <file>imgs/9.png</file>
+        <file>icons/1.ico</file>
+        <file>mpg/2.mpg</file>
+        <file>mpg/1.mpg</file>
+    </qresource>
+</RCC>

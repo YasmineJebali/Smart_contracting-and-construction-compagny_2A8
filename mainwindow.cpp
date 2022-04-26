@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QIntValidator>
 #include "smtp.h"
+#include "calendrier.h"
 #include "mailing.h"
 #include <iostream>
 #include <QtCharts>
@@ -11,6 +12,9 @@
 #include <QSqlQuery>
 #include <QPieSeries>
 #include <QRegExpValidator>
+QT_CHARTS_USE_NAMESPACE
+QString days="";
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->le_id_sup_2->setValidator (new QIntValidator(100, 9999999, this));
     ui->le_id_4->setValidator (new QIntValidator(100, 9999999, this));
     ui->rechercheinput->setValidator (new QIntValidator(100, 9999999, this));
+    ui->identifiant->setValidator (new QIntValidator(100, 9999999, this));
 
     ui->tab_employee->setModel(EMP->afficher());
     ui->tab_employee->show();
@@ -81,13 +86,13 @@ void MainWindow::on_pb_supprimer_clicked()
 
        QMessageBox:: information(nullptr, QObject::tr("OK"),
                QObject::tr("Suppression effectuée\n"
-                           "click OK LELA YASMINE to exit."), QMessageBox::Ok);
+                           "click OK to exit."), QMessageBox::Ok);
 
      }
        else
        QMessageBox::critical(nullptr,QObject::tr("Not OK"),
                QObject::tr("Echec de suppression\n"
-                           "click OK LELA YASMINE to exit."), QMessageBox::Ok);
+                           "click OK to exit."), QMessageBox::Ok);
 
    ui->tab_employee->setModel(EMP.afficher()); //refreche
 
@@ -242,5 +247,104 @@ void MainWindow::on_evaluer_clicked()
    ui->rated->setModel(EMP->afficherClassement());
    ui->rated->show();
    }
+}
+
+
+
+void MainWindow::on_pb_ajouter_2_clicked()
+{
+
+        int id=ui->le_id_5->text().toInt();
+        QDate date_deb=ui->le_date_deb->date();
+       QDate date_fin=ui->le_date_fin->date();
+      int periode=ui->la_periode->text().toInt();
+
+        calendrier c(id,date_deb,date_fin,periode);
+
+    bool test=c.ajouter();
+    if(test){
+        QMessageBox::information(nullptr,QObject::tr("calendrier"),QObject::tr("calendrier ajouté\n" "click ok to exit"),QMessageBox::Ok);
+        ui->le_id_5->setText("");//bech ba3ed mankamel l ajout yarja3 a 0
+        ui->tab_etudiant_2->setModel(c.afficher());//actualisation
+
+
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                 notifyIcon->show();
+                                 notifyIcon->setIcon(QIcon("icone.png"));
+
+                                 notifyIcon->showMessage("employer   ","calendrier Ajouté",QSystemTrayIcon::Information,15000);
+                 QMessageBox::information(nullptr, QObject::tr("OK"),
+                             QObject::tr("Ajout effectué.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+
+
+    }
+    else{
+        QMessageBox::critical(nullptr,QObject::tr("calendrier"),QObject::tr("Erreur!\n" "click ok to exit"),QMessageBox::Ok);
+    }
+
+}
+
+
+
+void MainWindow::on_le_modifier_2_clicked()
+{
+    {
+    int id= ui->le_id_5->text().toInt();
+
+            QDate date_deb=ui->le_date_deb->date();
+            QDate date_fin=ui->le_date_fin->date();
+            int periode= ui->la_periode->text().toInt();
+                           calendrier c(id,date_deb,date_fin,periode);
+                           ui->le_id_5->setText("");
+
+
+                bool test = c.update(id,date_deb,date_fin,periode);
+
+
+                if(test)
+
+                {
+                     ui->tab_etudiant_2->setModel(c.afficher());
+                     QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                              notifyIcon->show();
+                                              notifyIcon->setIcon(QIcon("icone.png"));
+
+                                              notifyIcon->showMessage("employer  ","calendrier Modifier",QSystemTrayIcon::Information,15000);
+                              QMessageBox::information(nullptr, QObject::tr("OK"),
+                                          QObject::tr("Modification effectué.\n"
+                                                      "Click Cancel to exit."), QMessageBox::Cancel);
+                    QMessageBox::information(nullptr, QObject::tr("update "),
+                                QObject::tr("Participant modifie\n"
+                "Click Cancel to exit."), QMessageBox::Cancel);
+                }
+}
+ }
+
+
+void MainWindow::on_pb_supprimer_2_clicked()
+{
+
+    calendrier c1;
+    c1.setid(ui->le_id_sup_3->text().toInt());
+  qDebug() <<ui->le_id_sup_3->text().toInt();
+        bool test=c1.supprimer(c1.getid());
+        QMessageBox msgBox;
+        if(test)
+           { msgBox.setText("Suppression avec succes.");
+            ui->tab_etudiant_2->setModel(c1.afficher());
+            QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                                     notifyIcon->show();
+                                     notifyIcon->setIcon(QIcon("icone.png"));
+
+                                     notifyIcon->showMessage("employer   ","calendrier supprimer",QSystemTrayIcon::Information,15000);
+                     QMessageBox::information(nullptr, QObject::tr("OK"),
+                                 QObject::tr("suppression effectué.\n"
+                                             "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+        else
+            msgBox.setText("Echec de suppression");
+            msgBox.exec();
 }
 

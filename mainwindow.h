@@ -72,7 +72,14 @@ private slots:
 
     void on_RATING_clicked();
 
-    void on_le_id_sup_currentChanged(int index);
+
+
+
+    void on_pb_ajouter_2_clicked();
+
+    void on_le_modifier_2_clicked();
+
+    void on_pb_supprimer_2_clicked();
 
 private:
     Ui::MainWindow *ui;

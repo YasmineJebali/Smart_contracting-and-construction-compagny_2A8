@@ -208,7 +208,3 @@ QSqlQueryModel * employee::afficherClassement()
 
 
 
-
-
-
-

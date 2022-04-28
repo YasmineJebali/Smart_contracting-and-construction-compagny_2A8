@@ -1,0 +1,26 @@
+
+id: 12
+Prenom: Testhisto
+Nom: rique
+Salaire: 123456789
+recherche
+id: 12
+Prenom: Testhisto
+Nom: rique
+Salaire: 123456789
+suppression
+id: 11
+Prenom: beraies
+Nom: lkdnjfdj
+Salaire: 
+recherche
+id: 11
+Prenom: beraies
+Nom: lkdnjfdj
+Salaire: 
+recherche
+id: 11
+Prenom: beraies
+Nom: lkdnjfdj
+Salaire: 
+recherche

@@ -10,7 +10,6 @@
 #include <QFileDialog>
 #include <QTextDocument>
 #include "smtp.h"
-#include "arduino.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -20,15 +19,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
   ui->le_id->setValidator(new QIntValidator(0, 999, this));
   ui->tab_part->setModel(P.afficher());
-int ret=A.connect_arduino();
-switch(ret){
-case(0):qDebug()<<" arduino is available and connected to : " <<A.getarduino_port_name();
-    break;
-case(1):qDebug()<<"arduino is available but not connected to : " <<A.getarduino_port_name();
-    break;
-case(-1):qDebug()<< "arduino is not available";
-}
-QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -118,10 +112,12 @@ QMessageBox::critical(nullptr, QObject::tr("Modifier"),
 
 void MainWindow::on_reche_clicked()
 {
-    Partenaire p;
-        QString nbr=ui->search_id->text();
-            QString prenom=ui->search_prenom->text();
-             ui->tabView->setModel(p.rech(prenom,nbr));
+    int reference = ui->search_id->text().toUInt();
+            ui->tabView->setModel(ptr->rechercher(reference));
+
+            historique h;
+            h.save_txt(ui->le_id->text(),ui->le_nom->text(),ui->le_prenom->text(),ui->le_salaire->text(),"recherche");
+            ui->historique->setText(h.imp_hist());
 
 }
 
@@ -145,30 +141,4 @@ void MainWindow::on_mail_clicked()
         connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
 
         smtp->sendMail("tundevt8m@gmail.com",ui->em->text(),ui->subject->text(),ui->body->text());
-}
-
-void MainWindow::on_CheckArduino_clicked()
-{
-}
-
-void MainWindow::update_label()
-{
-    data=A.read_from_arduino();
-
-        if(data=="1")
-
-  { ui->labelarduino->setText("yes"); // si les données reçues de arduino via la liaison série sont égales à 1
-        // alors afficher msg
-        QMessageBox::information(nullptr, QObject::tr("Entrer  d'un client"),
-                                        QObject::tr("Client detecte.\n"
-                                                    "Click Cancel to exit."), QMessageBox::Cancel);
-QSqlQuery query;
-query.exec("insert into ENREGISTREMENT (MSG) values('detected'); ");}
-else if (data=="0")
- {
-    ui->labelarduino->setText("no"); // si les données reçues de arduino via la liaison série sont égales à 1
-    // alors afficher msg
- QSqlQuery query;
- query.exec("insert into ENREGISTREMENT (MSG) values('Pas de detection'); ");
-        }
 }

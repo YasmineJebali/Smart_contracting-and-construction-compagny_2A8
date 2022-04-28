@@ -558,7 +558,7 @@ color:white;
       <rect>
        <x>500</x>
        <y>140</y>
-       <width>101</width>
+       <width>71</width>
        <height>20</height>
       </rect>
      </property>
@@ -570,10 +570,10 @@ color:white;
       </font>
      </property>
      <property name="text">
-      <string>Réf/Nom</string>
+      <string>Réference :</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_ref_nom">
+    <widget class="QLineEdit" name="lineEdit_ref_2">
      <property name="geometry">
       <rect>
        <x>612</x>
@@ -1110,10 +1110,64 @@ color :white;
       <string>        Notification</string>
      </property>
     </widget>
+    <widget class="QLineEdit" name="lineEdit_nom_2">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>180</y>
+       <width>91</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_reche_2">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>180</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+padding:5px;
+border-radius:5px;
+background-color:rgb(188, 74, 60);
+font-weight:bold;
+}
+QPushButton:hover
+{
+color:white;
+}</string>
+     </property>
+     <property name="text">
+      <string>Recherche</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>180</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Nom :</string>
+     </property>
+    </widget>
     <zorder>pushButton_notification</zorder>
     <zorder>pushButton_reche</zorder>
     <zorder>label_ref</zorder>
-    <zorder>lineEdit_ref_nom</zorder>
+    <zorder>lineEdit_ref_2</zorder>
     <zorder>frame_6</zorder>
     <zorder>tabView_Materiels</zorder>
     <zorder>frame_5</zorder>
@@ -1123,6 +1177,9 @@ color :white;
     <zorder>label_excel</zorder>
     <zorder>label_chart</zorder>
     <zorder>label_notific</zorder>
+    <zorder>lineEdit_nom_2</zorder>
+    <zorder>pushButton_reche_2</zorder>
+    <zorder>label_13</zorder>
    </widget>
    <widget class="QWidget" name="page_4">
     <widget class="QFrame" name="horizontalFrame">

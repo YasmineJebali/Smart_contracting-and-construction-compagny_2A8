@@ -387,11 +387,18 @@ QMessageBox::critical(nullptr, QObject::tr("Modifier"),
 
 void materiels::on_pushButton_reche_clicked()
 {
-    int reference = ui->lineEdit_ref_nom->text().toUInt();
-    QString nom= ui->lineEdit_ref_nom->text();
+    int reference = ui->lineEdit_ref_2->text().toUInt();
+
             ui->tabView_Materiels->setModel(tMateriels->rechercherR(reference));
-            ui->tabView_Materiels->setModel(tMateriels->rechercherN(nom));
 }
+
+void materiels::on_pushButton_reche_2_clicked()
+{
+    QString nom= ui->lineEdit_nom_2->text();
+    ui->tabView_Materiels->setModel(tMateriels->rechercherN(nom));
+}
+
+
 
 
 
@@ -478,3 +485,5 @@ void materiels::testInput(){
 
    }
    }
+
+

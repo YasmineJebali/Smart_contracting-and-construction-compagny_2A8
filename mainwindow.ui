@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>641</width>
+    <width>597</width>
     <height>379</height>
    </rect>
   </property>
@@ -14,14 +14,25 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label_back">
+   <widget class="QLabel" name="label_logo">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>711</width>
-      <height>411</height>
+      <x>70</x>
+      <y>30</y>
+      <width>451</width>
+      <height>191</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">.QLabel {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+width: 256px;
+ height: 256px;
+ border-image:url(&quot;:/ressources/imgs/logo.png&quot;);
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -76,7 +87,7 @@ border-color:black
    <widget class="QPushButton" name="pushButton_start">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>30</x>
       <y>210</y>
       <width>191</width>
       <height>131</height>
@@ -119,13 +130,30 @@ border-color:black
      <string>start</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_back">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>651</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label_back</zorder>
+   <zorder>label_logo</zorder>
+   <zorder>pushButton_close</zorder>
+   <zorder>pushButton_start</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>641</width>
+     <width>597</width>
      <height>22</height>
     </rect>
    </property>

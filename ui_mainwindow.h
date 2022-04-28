@@ -27,9 +27,10 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QLabel *label_back;
+    QLabel *label_logo;
     QPushButton *pushButton_close;
     QPushButton *pushButton_start;
+    QLabel *label_back;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -37,12 +38,21 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(641, 379);
+        MainWindow->resize(597, 379);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        label_back = new QLabel(centralwidget);
-        label_back->setObjectName(QStringLiteral("label_back"));
-        label_back->setGeometry(QRect(10, 0, 711, 411));
+        label_logo = new QLabel(centralwidget);
+        label_logo->setObjectName(QStringLiteral("label_logo"));
+        label_logo->setGeometry(QRect(70, 30, 451, 191));
+        label_logo->setStyleSheet(QLatin1String(".QLabel {\n"
+"  display: block;\n"
+"  margin-left: auto;\n"
+"  margin-right: auto;\n"
+"  width: 75%;\n"
+"width: 256px;\n"
+" height: 256px;\n"
+" border-image:url(\":/ressources/imgs/logo.png\");\n"
+"}"));
         pushButton_close = new QPushButton(centralwidget);
         pushButton_close->setObjectName(QStringLiteral("pushButton_close"));
         pushButton_close->setGeometry(QRect(370, 210, 191, 131));
@@ -79,7 +89,7 @@ public:
 "  }"));
         pushButton_start = new QPushButton(centralwidget);
         pushButton_start->setObjectName(QStringLiteral("pushButton_start"));
-        pushButton_start->setGeometry(QRect(160, 210, 191, 131));
+        pushButton_start->setGeometry(QRect(30, 210, 191, 131));
         pushButton_start->setStyleSheet(QLatin1String("  QPushButton{\n"
 "  box-sizing: border-box;\n"
 "  appearance: none;\n"
@@ -111,10 +121,17 @@ public:
 "color:black;\n"
 "border-color:black\n"
 "  }"));
+        label_back = new QLabel(centralwidget);
+        label_back->setObjectName(QStringLiteral("label_back"));
+        label_back->setGeometry(QRect(10, 0, 651, 351));
         MainWindow->setCentralWidget(centralwidget);
+        label_back->raise();
+        label_logo->raise();
+        pushButton_close->raise();
+        pushButton_start->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 641, 22));
+        menubar->setGeometry(QRect(0, 0, 597, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -128,9 +145,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        label_back->setText(QString());
+        label_logo->setText(QString());
         pushButton_close->setText(QApplication::translate("MainWindow", "Cancel", Q_NULLPTR));
         pushButton_start->setText(QApplication::translate("MainWindow", "start", Q_NULLPTR));
+        label_back->setText(QString());
     } // retranslateUi
 
 };

@@ -62,6 +62,8 @@ private slots:
    void on_pushButton_chart_clicked();
    void on_pushButton_excel_clicked();
 
+   void on_pushButton_reche_2_clicked();
+
 private:
 
     Ui::materiels *ui;

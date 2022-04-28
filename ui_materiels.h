@@ -62,7 +62,7 @@ public:
     QWidget *page_3;
     QPushButton *pushButton_reche;
     QLabel *label_ref;
-    QLineEdit *lineEdit_ref_nom;
+    QLineEdit *lineEdit_ref_2;
     QFrame *frame_6;
     QPushButton *pushButton_mod;
     QLabel *label_12;
@@ -90,6 +90,9 @@ public:
     QLabel *label_chart;
     QLabel *label_notific;
     QPushButton *pushButton_notification;
+    QLineEdit *lineEdit_nom_2;
+    QPushButton *pushButton_reche_2;
+    QLabel *label_13;
     QWidget *page_4;
     QFrame *horizontalFrame;
     QHBoxLayout *horizontalLayout;
@@ -354,15 +357,15 @@ public:
 "}"));
         label_ref = new QLabel(page_3);
         label_ref->setObjectName(QStringLiteral("label_ref"));
-        label_ref->setGeometry(QRect(500, 140, 101, 20));
+        label_ref->setGeometry(QRect(500, 140, 71, 20));
         QFont font2;
         font2.setPointSize(10);
         font2.setBold(true);
         font2.setItalic(false);
         label_ref->setFont(font2);
-        lineEdit_ref_nom = new QLineEdit(page_3);
-        lineEdit_ref_nom->setObjectName(QStringLiteral("lineEdit_ref_nom"));
-        lineEdit_ref_nom->setGeometry(QRect(612, 140, 91, 20));
+        lineEdit_ref_2 = new QLineEdit(page_3);
+        lineEdit_ref_2->setObjectName(QStringLiteral("lineEdit_ref_2"));
+        lineEdit_ref_2->setGeometry(QRect(612, 140, 91, 20));
         frame_6 = new QFrame(page_3);
         frame_6->setObjectName(QStringLiteral("frame_6"));
         frame_6->setGeometry(QRect(540, 210, 251, 241));
@@ -553,11 +556,34 @@ public:
 "{\n"
 "color :white;\n"
 "}"));
+        lineEdit_nom_2 = new QLineEdit(page_3);
+        lineEdit_nom_2->setObjectName(QStringLiteral("lineEdit_nom_2"));
+        lineEdit_nom_2->setGeometry(QRect(610, 180, 91, 22));
+        pushButton_reche_2 = new QPushButton(page_3);
+        pushButton_reche_2->setObjectName(QStringLiteral("pushButton_reche_2"));
+        pushButton_reche_2->setGeometry(QRect(700, 180, 81, 21));
+        pushButton_reche_2->setStyleSheet(QLatin1String("QPushButton {\n"
+"padding:5px;\n"
+"border-radius:5px;\n"
+"background-color:rgb(188, 74, 60);\n"
+"font-weight:bold;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"color:white;\n"
+"}"));
+        label_13 = new QLabel(page_3);
+        label_13->setObjectName(QStringLiteral("label_13"));
+        label_13->setGeometry(QRect(500, 180, 51, 16));
+        QFont font6;
+        font6.setPointSize(10);
+        font6.setBold(true);
+        label_13->setFont(font6);
         stackedWidget->addWidget(page_3);
         pushButton_notification->raise();
         pushButton_reche->raise();
         label_ref->raise();
-        lineEdit_ref_nom->raise();
+        lineEdit_ref_2->raise();
         frame_6->raise();
         tabView_Materiels->raise();
         frame_5->raise();
@@ -567,6 +593,9 @@ public:
         label_excel->raise();
         label_chart->raise();
         label_notific->raise();
+        lineEdit_nom_2->raise();
+        pushButton_reche_2->raise();
+        label_13->raise();
         page_4 = new QWidget();
         page_4->setObjectName(QStringLiteral("page_4"));
         horizontalFrame = new QFrame(page_4);
@@ -609,7 +638,7 @@ public:
         label_click->setText(QString());
         label_backr->setText(QString());
         pushButton_reche->setText(QApplication::translate("materiels", "Recherche", Q_NULLPTR));
-        label_ref->setText(QApplication::translate("materiels", "R\303\251f/Nom", Q_NULLPTR));
+        label_ref->setText(QApplication::translate("materiels", "R\303\251ference :", Q_NULLPTR));
         pushButton_mod->setText(QApplication::translate("materiels", "Modifier", Q_NULLPTR));
         label_12->setText(QApplication::translate("materiels", "Prix TTC :", Q_NULLPTR));
         label_7->setText(QApplication::translate("materiels", "R\303\251f:", Q_NULLPTR));
@@ -634,6 +663,8 @@ public:
         label_chart->setText(QString());
         label_notific->setText(QString());
         pushButton_notification->setText(QApplication::translate("materiels", "        Notification", Q_NULLPTR));
+        pushButton_reche_2->setText(QApplication::translate("materiels", "Recherche", Q_NULLPTR));
+        label_13->setText(QApplication::translate("materiels", "Nom :", Q_NULLPTR));
     } // retranslateUi
 
 };

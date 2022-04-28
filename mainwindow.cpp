@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     QPixmap pix1(":/ressources/imgs/4.jpg");
-    ui->label_back->setPixmap(pix1);
     int w1 = ui->label_back->width();
      int h1 = ui->label_back->height();
      ui->label_back->setPixmap(pix1.scaled(w1,h1,Qt::KeepAspectRatio));

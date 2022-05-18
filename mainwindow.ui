@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>907</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,13 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="le_id_sup">
+   <widget class="QTabWidget" name="Qrcode">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>701</width>
-      <height>521</height>
+      <x>40</x>
+      <y>20</y>
+      <width>841</width>
+      <height>511</height>
      </rect>
     </property>
     <property name="accessibleName">
@@ -35,13 +35,13 @@ background-color: rgb(148, 148, 148);</string>
     </property>
     <widget class="QWidget" name="widget">
      <attribute name="title">
-      <string>Ajouter EM</string>
+      <string>Ajouter ch</string>
      </attribute>
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>40</y>
+        <x>20</x>
+        <y>30</y>
         <width>641</width>
         <height>411</height>
        </rect>
@@ -63,7 +63,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Identifiant</string>
+        <string>Id</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_2">
@@ -76,7 +76,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Nom</string>
+        <string>emplace</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_3">
@@ -89,10 +89,10 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Prenom</string>
+        <string>surface</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="le_id">
+      <widget class="QLineEdit" name="line_id">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -102,7 +102,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="le_nom">
+      <widget class="QLineEdit" name="line_emplace">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -112,7 +112,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="le_prenom">
+      <widget class="QLineEdit" name="line_surface">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -125,11 +125,25 @@ background-color: rgb(218, 217, 217);</string>
       <widget class="QPushButton" name="pb_ajouter">
        <property name="geometry">
         <rect>
-         <x>250</x>
-         <y>350</y>
-         <width>93</width>
-         <height>28</height>
+         <x>410</x>
+         <y>320</y>
+         <width>141</width>
+         <height>41</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
        </property>
        <property name="text">
         <string>Ajouter</string>
@@ -139,26 +153,26 @@ background-color: rgb(218, 217, 217);</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>160</y>
+         <y>180</y>
          <width>71</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>Adresse</string>
+        <string>topog</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_5">
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>210</y>
+         <y>220</y>
          <width>56</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>Email</string>
+        <string>cout</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_6">
@@ -171,7 +185,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Salaire</string>
+        <string>type</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_7">
@@ -184,30 +198,30 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Fonction</string>
+        <string>autorisa</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="adresse">
+      <widget class="QLineEdit" name="topog">
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>150</y>
+         <y>180</y>
          <width>411</width>
          <height>22</height>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="email">
+      <widget class="QLineEdit" name="line_cout">
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>200</y>
+         <y>220</y>
          <width>411</width>
          <height>22</height>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="salaire">
+      <widget class="QLineEdit" name="line_type">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -217,7 +231,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="fonction">
+      <widget class="QLineEdit" name="line_autorisa">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -227,30 +241,159 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>150</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>plan</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="line_plan">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>150</y>
+         <width>411</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Afficher EM</string>
+      <string>Afficher ch</string>
      </attribute>
-     <widget class="QTableView" name="tab_employee">
+     <widget class="QTableView" name="tableView_chan">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>50</y>
-        <width>521</width>
-        <height>331</height>
+        <x>55</x>
+        <y>30</y>
+        <width>611</width>
+        <height>341</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(218, 217, 217);
-</string>
+       <string notr="true"> QTableView {
+     selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
+                                 stop: 0 #FF92BB, stop: 1 white);
+ }
+ QTableView QTableCornerButton::section {
+     background: red;
+     border: 2px outset red;
+ }</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="surfR">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>70</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>70</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Surface :</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_rechS">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>100</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+      </property>
+      <property name="text">
+       <string>recherche</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>160</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cout :</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_coutR">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>160</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_rech_2">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>190</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+      </property>
+      <property name="text">
+       <string>recherche</string>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Modifier EM</string>
+      <string>Modifier ch</string>
      </attribute>
      <widget class="QListWidget" name="listWidget">
       <property name="geometry">
@@ -266,9 +409,9 @@ background-color: rgb(218, 217, 217);</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>40</y>
-        <width>641</width>
-        <height>411</height>
+        <y>30</y>
+        <width>761</width>
+        <height>441</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -288,7 +431,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Identifiant</string>
+        <string>Id</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_8">
@@ -301,7 +444,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Nom</string>
+        <string>emplace</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_9">
@@ -314,10 +457,10 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Prenom</string>
+        <string>surface</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="le_id_4">
+      <widget class="QLineEdit" name="id_2">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -327,7 +470,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="le_nom_2">
+      <widget class="QLineEdit" name="emplace_2">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -337,7 +480,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="le_prenom_2">
+      <widget class="QLineEdit" name="surface_2">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -350,14 +493,28 @@ background-color: rgb(218, 217, 217);</string>
       <widget class="QPushButton" name="pb_modifier">
        <property name="geometry">
         <rect>
-         <x>250</x>
-         <y>350</y>
-         <width>93</width>
-         <height>28</height>
+         <x>440</x>
+         <y>370</y>
+         <width>151</width>
+         <height>31</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+       </property>
        <property name="text">
-        <string>MODIFIER</string>
+        <string>modifier</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_10">
@@ -370,7 +527,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Adresse</string>
+        <string>plan</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_11">
@@ -383,7 +540,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Email</string>
+        <string>topog</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_12">
@@ -396,7 +553,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Salaire</string>
+        <string>cout</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_13">
@@ -409,10 +566,10 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
        <property name="text">
-        <string>Fonction</string>
+        <string>type</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="adresse_2">
+      <widget class="QLineEdit" name="plan_2">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -422,7 +579,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="email_2">
+      <widget class="QLineEdit" name="topog_2">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -432,7 +589,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="salaire_2">
+      <widget class="QLineEdit" name="cout_2">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -442,7 +599,7 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="fonction_2">
+      <widget class="QLineEdit" name="type_2">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -452,13 +609,36 @@ background-color: rgb(218, 217, 217);</string>
         </rect>
        </property>
       </widget>
+      <widget class="QLineEdit" name="autorisa_2">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>330</y>
+         <width>421</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_16">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>330</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>autorisa</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Supprimer EM</string>
+      <string>Supprimer ch</string>
      </attribute>
-     <widget class="QLineEdit" name="le_id_sup_2">
+     <widget class="QLineEdit" name="ide">
       <property name="geometry">
        <rect>
         <x>170</x>
@@ -481,20 +661,243 @@ background-color: rgb(218, 217, 217);</string>
        <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
       </property>
       <property name="text">
-       <string>Identifiant</string>
+       <string>Id</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pb_supprimer">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>230</y>
+        <x>530</x>
+        <y>60</y>
         <width>121</width>
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+      </property>
       <property name="text">
        <string>Supprimer</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Export Pdf</string>
+     </attribute>
+     <widget class="QPushButton" name="PDF_pb">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>30</y>
+        <width>231</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:40px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+      </property>
+      <property name="text">
+       <string>Export PDF</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Trier</string>
+     </attribute>
+     <widget class="QPushButton" name="triePB">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>120</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+      </property>
+      <property name="text">
+       <string>emplacement</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>70</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>trier selon:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="triePB_2">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>120</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+      </property>
+      <property name="text">
+       <string>surface</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tab_trie">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>180</y>
+        <width>671</width>
+        <height>261</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Map</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>Qr code</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupInput">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>10</y>
+        <width>321</width>
+        <height>301</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>760</width>
+        <height>360</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>QrCode :</string>
+      </property>
+      <widget class="QLabel" name="qrcode">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>20</y>
+         <width>241</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QTableView" name="tableView_Qr">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>471</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> QTableView {
+     selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
+                                 stop: 0 #FF92BB, stop: 1 white);
+ } 
+QTableView QTableCornerButton::section {
+     background: red;
+     border: 2px outset red;
+ }</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="generateButton">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>340</y>
+        <width>201</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+color: #fff;
+background:#b22626;
+border-radius: 15px;
+font-size:40px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QPushButton:hover {
+color:#fff;
+border:15px;
+background:#6a1616;
+}</string>
+      </property>
+      <property name="text">
+       <string>Generate</string>
       </property>
      </widget>
     </widget>
@@ -505,8 +908,8 @@ background-color: rgb(218, 217, 217);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>26</height>
+     <width>907</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

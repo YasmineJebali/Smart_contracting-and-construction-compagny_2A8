@@ -3,44 +3,45 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
-
-
-
+#include <QSqlQueryModel>
 #include <QMainWindow>
-#include "employer.h"
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
+#include <QTextStream>
+#include <QIntValidator>
+#include "chantier.h"
+#include <QSqlQueryModel>
+#include <QVector>
+#include <qtableview.h>
+#include "qrcode.h"
 
-namespace Ui {
-class MainWindow;
-}
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
-    //void on_pushButton_clicked();
-
     void on_pb_ajouter_clicked();
-
-    //void on_le_id_cursorPositionChanged(int arg1, int arg2);
-
-    //void on_pb_supprimer_clicked();
-
-    void on_tab_employee_activated(const QModelIndex &index);
-
-    void on_tab_employee_clicked(const QModelIndex &index);
-
     void on_pb_supprimer_clicked();
-
     void on_pb_modifier_clicked();
+    void on_PDF_pb_clicked();
+    void on_triePB_clicked();
+    void on_triePB_2_clicked();
+    void on_pushButton_rechS_clicked();
+    void on_pushButton_rech_2_clicked();
+    void on_generateButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    employee *EMP;
+    Chantier *ch;
+     Chantier *tch;
 };
-
 #endif // MAINWINDOW_H

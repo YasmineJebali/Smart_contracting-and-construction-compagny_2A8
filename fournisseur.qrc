@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/fournisseur">
+        <file>mpg/3.mpg</file>
+    </qresource>
+</RCC>

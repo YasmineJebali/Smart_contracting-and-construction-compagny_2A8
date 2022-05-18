@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/ressources2">
+        <file>gifs/emp_auth.gif</file>
+        <file>gifs/buble2.gif</file>
+        <file>mpg/1.mpg</file>
+        <file>mp3/barrier.mp3</file>
+    </qresource>
+</RCC>

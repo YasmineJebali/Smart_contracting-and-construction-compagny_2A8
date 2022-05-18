@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/employe">
+        <file>Diffnes.qss</file>
+        <file>Integrid.qss</file>
+    </qresource>
+</RCC>

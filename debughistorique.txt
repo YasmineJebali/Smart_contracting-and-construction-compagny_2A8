@@ -1,0 +1,50 @@
+id: 901
+Prenom: partenaire
+Nom: partenaire
+Salaire: 20
+ajout
+id: 206
+Prenom: 
+Nom: 
+Salaire: 
+ajout
+id: 206
+Prenom: 
+Nom: 
+Salaire: 
+ajout
+id: 206
+Prenom: 
+Nom: 
+Salaire: 
+ajout
+id: 2066
+Prenom: 
+Nom: 
+Salaire: 
+ajout
+id: 
+Prenom: 
+Nom: 
+Salaire: 
+ajout
+id: 
+Prenom: 
+Nom: 
+Salaire: 
+ajout
+id: 
+Prenom: 
+Nom: 
+Salaire: 
+ajout
+id: 
+Prenom: 
+Nom: 
+Salaire: 
+ajout
+id: 
+Prenom: 
+Nom: 
+Salaire: 
+ajout
